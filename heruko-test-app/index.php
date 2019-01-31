@@ -19,6 +19,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 ?>
         <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
 <?php } catch(Exception $e) {
+  echo $AWS_SECRET_ACCESS_KEY
+echo $AWS_ACCESS_KEY_ID
         echo 'Caught exception: ',  $e->getMessage(), "\n";
   ?>
         <p>Upload error :(</p>
