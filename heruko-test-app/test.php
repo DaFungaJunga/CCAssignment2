@@ -22,7 +22,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   <body>
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-      <a class="navbar-brand" href="#">Assignment 2r</a>
+      <a class="navbar-brand" href="#">Assignment 2</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,9 +35,6 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li
         </ul>
 
       </div>
@@ -49,6 +46,9 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       </div>
 
     </main><!-- /.container -->
+
+
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
