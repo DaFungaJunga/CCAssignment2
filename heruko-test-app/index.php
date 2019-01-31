@@ -8,7 +8,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     <head><meta charset="UTF-8"></head>
     <body>
         <h1>Hello SOFE4630</h1>
-		
+
 		<a href="https://floating-beyond-79601.herokuapp.com/list.php">Files List</a>
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK && is_uploaded_file($_FILES['userfile']['tmp_name'])) {
@@ -18,7 +18,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
         $upload = $s3->upload($bucket, $_FILES['userfile']['name'], fopen($_FILES['userfile']['tmp_name'], 'rb'), 'public-read');
 ?>
         <p>Upload <a href="<?=htmlspecialchars($upload->get('ObjectURL'))?>">successful</a> :)</p>
-<?php } catch(Exception $e) { ?>
+<?php } catch(Exception $e) {
+        echo 'Caught exception: ',  $e->getMessage(), "\n";
+  ?>
         <p>Upload error :(</p>
 <?php } } ?>
         <h2>Upload a file</h2>
