@@ -83,7 +83,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     video.play();
   });
 }
-
+</script>
 
 
 
