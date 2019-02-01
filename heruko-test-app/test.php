@@ -49,6 +49,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <h1>Camera Test</h1>
 <video id="video" width="640" height="480" autoplay></video>
 <button id="snap">Snap Photo</button>
+<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
 <canvas id="canvas" width="640" height="480"></canvas>
 <script scr="https://github.com/hongru/canvas2image/canvas2image.js"></script>
 <script>
@@ -66,14 +67,19 @@ var video = document.getElementById('video');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 var video = document.getElementById('video');
+var button = document.getElementById('btn-download');
 
 
 // Trigger photo take
 document.getElementById("snap").addEventListener("click", function() {
   context.drawImage(video, 0, 0, 640, 480);
-  var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  //var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+  var img = canvas.toDataURL("image/png");
+
   //window.location.href=img;
-  Canvas2Image.saveAsPNG(canvas,640,480);
+  button.href = img;
+
+  //Canvas2Image.saveAsPNG(canvas,640,480);
 
 });
 // Get access to the camera!
