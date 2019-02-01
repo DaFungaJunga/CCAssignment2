@@ -33,7 +33,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Other Users</a>
         </li>
       </ul>
 
@@ -49,9 +49,8 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <h1>Camera Test</h1>
 <video id="video" width="640" height="480" autoplay></video>
 <button id="snap">Snap Photo</button>
-<a href="#" class="button" id="btn-download" download="my-file-name.png">Download</a>
+<a href="#" class="button" id="btn-download" download="my-file-name.png">Download Picture</a>
 <canvas id="canvas" width="640" height="480"></canvas>
-<script scr="https://github.com/hongru/canvas2image/canvas2image.js"></script>
 <script>
 function dataURItoBlob(dataURI) {
     var binary = atob(dataURI.split(',')[1]);
@@ -74,13 +73,9 @@ var button = document.getElementById('btn-download');
 document.getElementById("snap").addEventListener("click", function() {
   context.drawImage(video, 0, 0, 640, 480);
   //var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  var img = canvas.toDataURL("image/png");
-
+  var dataURL = canvas.toDataURL('image/png');
+  button.href = dataURL;
   //window.location.href=img;
-  button.href = img;
-
-  //Canvas2Image.saveAsPNG(canvas,640,480);
-
 });
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
