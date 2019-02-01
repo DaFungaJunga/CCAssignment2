@@ -72,8 +72,8 @@ var video = document.getElementById('video');
 document.getElementById("snap").addEventListener("click", function() {
   context.drawImage(video, 0, 0, 640, 480);
   var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  window.location.href=img;
-  //Canvas2Image.saveAsPNG(canvas);
+  //window.location.href=img;
+  Canvas2Image.saveAsPNG(canvas,640,480);
 
 });
 // Get access to the camera!
