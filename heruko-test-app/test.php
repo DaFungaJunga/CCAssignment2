@@ -33,7 +33,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
           <a class="nav-link" href="test.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="test.php">Other Users</a>
+          <a class="nav-link" href="list.php">Other Users</a>
         </li>
       </ul>
 
