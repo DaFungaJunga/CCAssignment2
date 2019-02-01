@@ -50,7 +50,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <video id="video" width="640" height="480" autoplay></video>
 <button id="snap">Snap Photo</button>
 <canvas id="canvas" width="640" height="480"></canvas>
-
+<script scr="https://github.com/hongru/canvas2image/canvas2image.js"></script>
 <script>
 function dataURItoBlob(dataURI) {
     var binary = atob(dataURI.split(',')[1]);
@@ -72,7 +72,9 @@ var video = document.getElementById('video');
 document.getElementById("snap").addEventListener("click", function() {
   context.drawImage(video, 0, 0, 640, 480);
   var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-  window.location.href=image;
+  window.location.href=img;
+  //Canvas2Image.saveAsPNG(canvas);
+
 });
 // Get access to the camera!
 if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
