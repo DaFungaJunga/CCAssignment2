@@ -1,7 +1,15 @@
 <?php
 require('vendor/autoload.php');
+$config = [
+        "bucket" => getenv('S3_BUCKET'),        // Fill in with your aws bucket name
+        "key" => getenv('AWS_ACCESS_KEY_ID'),           // Fill in with your AWS Key
+        "secret" => getenv('AWS_SECRET_ACCESS_KEY'),        // Fill in with your AWS Secret
+        "region" => getenv('AWS_REGION'),  // Fill in with your S3 Bucket's region
+        "version" => "2019-02-03",
+    ];
 // this will simply read AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY from env vars
-$s3 = Aws\S3\S3Client::factory();
+//$s3 = Aws\S3\S3Client::factory();
+$s3 = Aws\S3\S3Client($config);
 $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
 ?>
 <html>
