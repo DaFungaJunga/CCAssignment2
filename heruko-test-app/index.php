@@ -21,8 +21,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['userfile']) && $_FILES
 <?php } catch(Exception $e) {
 
         echo 'Caught exception: ',  $e->getMessage(), "\n";
-        echo 'Caught AWS_ACCESS_KEY_ID: ',  getenv('AWS_ACCESS_KEY_I'), "\n";
-        echo 'Caught AWS_SECRET_ACCESS_KEY: ',getenv('AWS_SECRET_ACCESS_KEY'), "\n";
+        echo 'AWS_ACCESS_KEY_ID: ',  getenv('AWS_ACCESS_KEY_ID'), "\n";
+        echo 'AWS_SECRET_ACCESS_KEY: ',getenv('AWS_SECRET_ACCESS_KEY'), "\n";
 
   ?>
         <p>Upload error :(</p>
