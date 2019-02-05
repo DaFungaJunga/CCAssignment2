@@ -176,7 +176,7 @@ foreach ($objects as $object) {
 <? echo "<script> var canvas".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
    " = ". htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
    " = canvas".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   "; </script><script> drawDataURIOnCanvas(".
+   "; drawDataURIOnCanvas(".
    htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
    ', canvas'.
    htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
