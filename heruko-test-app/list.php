@@ -170,7 +170,7 @@ $objects = $s3->getIterator('ListObjects', array(
 foreach ($objects as $object) {
 ?>
 <p> <a href="<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>"> <?echo $object['Key'] . "<br>";?></a></p>
-<? echo "<script> drawDataURIOnCanvas("."<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>".", canvas); </script>"; 
+<? echo "<script> drawDataURIOnCanvas(".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).", canvas); </script>";
 <?		}?>
 
 <?php } catch(Exception $e) {
