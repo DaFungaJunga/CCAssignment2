@@ -168,19 +168,18 @@ try {
 $objects = $s3->getIterator('ListObjects', array(
 "Bucket" => $bucket
 ));
+$i = -1;
+$url;
 foreach ($objects as $object) {
+  $i++;
+  $url = htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']));
 ?>
 
-<p> <a href="<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>"> <?echo $object['Key'] . "<br>";?></a></p>
-<canvas id="canvas<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>" width="640" height="480"></canvas>
-<? echo "<script> var canvas".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   " = ". htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   " = canvas".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   "; drawDataURIOnCanvas(".
-   htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   ', canvas'.
-   htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-  '); </script>'; ?>
+<p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
+<canvas id="canvas<?=$i ?>" width="640" height="480"></canvas>
+<? echo "<script> var canvas".$url.
+   " = ". $url.
+   " = canvas".$i."; drawDataURIOnCanvas(".$url.', canvas'.$i.'); </script>'; ?>
 <?		}?>
 
 <?php } catch(Exception $e) {
