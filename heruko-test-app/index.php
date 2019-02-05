@@ -100,26 +100,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
   });
 }
 </script>
-<?php
-$client = new RekognitionClient($array(
-    'credentials' => array(
-        'key'    => $ke,
-        'secret' => $se,
-        'token'  => $sess,
-    )
-));
 
-$image = new Imagick('/app/image1.png');
-$imdata = $image->getImageBlob();
-
-$result = $client->detectLabels(
-    [
-       'Image' => [
-          'Bytes' => $imdata,
-       ]
-    ]
-);
- ?>
 
 
 
