@@ -172,7 +172,12 @@ foreach ($objects as $object) {
 
 <p> <a href="<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?>" width="640" height="480"></canvas>
-<? echo "<script> var canvas";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?><? echo " = ";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?> <?echo " = canvas";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?> <?echo "; </script>"; ?>
+<? echo "<script> var canvas".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
+   " = ".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
+   " = canvas".
+   htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
+   "; </script>"; 
+   ?>
 <? echo "<script> drawDataURIOnCanvas(";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?><?echo ", canvas";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?> <? echo "); </script>"; ?>
 <?		}?>
 
