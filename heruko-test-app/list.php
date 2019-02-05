@@ -176,9 +176,13 @@ foreach ($objects as $object) {
    " = ".htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
    " = canvas".
    htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
-   "; </script>"; 
+   "; </script>";
    ?>
-<? echo "<script> drawDataURIOnCanvas(";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?><?echo ", canvas";?><?=htmlspecialchars($s3->getObjectUrl($bucket, $object['Key']))?> <? echo "); </script>"; ?>
+<? echo "<script> drawDataURIOnCanvas(".
+htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
+", canvas".
+htmlspecialchars($s3->getObjectUrl($bucket, $object['Key'])).
+"); </script>"; ?>
 <?		}?>
 
 <?php } catch(Exception $e) {
