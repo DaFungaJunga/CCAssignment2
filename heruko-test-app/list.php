@@ -184,7 +184,7 @@ foreach ($objects as $object) {
 <? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
 $( document ).ready(function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
-};
+});
  </script>'; ?>
 <?		}?>
 
