@@ -184,7 +184,7 @@ foreach ($objects as $object) {
 <button type="button" id="button<?=$i?>">Click to view image</button>
 <? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
-    drawDataURIOnCanvas('.$url.','.$i.');
+    drawDataURIOnCanvas('.$url.',canvas'.$i.');
 }, false);
  </script>';?>
 <?		}?>
