@@ -35,8 +35,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       myCanvasContext.drawImage(img, 0, 0);
     });
     img.setAttribute("src", strDataURI);
-  //  img.crossOrigin = "Anonymous";
-    img.crossOrigin = window.location.origin;
+    //img.crossOrigin = "Anonymous";
 }
   </script>
   <meta charset="utf-8">
@@ -86,7 +85,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   }, false);*/
 
   //Calls DetectFaces API and shows estimated ages of detected faces
-  function DetectFaces(imageData) {
+  function DetectFaces(imageData,i) {
     AWS.region = "RegionToUse";
     var rekognition = new AWS.Rekognition();
     var params = {
@@ -107,7 +106,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
             '</td><td>' + data.FaceDetails[i].AgeRange.High + '</td></tr>';
         }
         table += "</table>";
-        document.getElementById("opResult<?=$i?>").innerHTML = table;
+        document.getElementById("opResult"+i).innerHTML = table;
       }
     });
   }
@@ -154,7 +153,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
           ua[i] = image.charCodeAt(i);
         }
         //Call Rekognition
-        DetectFaces(imageBytes);
+        DetectFaces(imageBytes,i);
       /*};
     })(file);
     reader.readAsDataURL(file);*/
