@@ -105,33 +105,33 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
             '</td><td>' + data.FaceDetails[i].AgeRange.High + '</td></tr>';
         }
         table += "</table>";
-        document.getElementById("opResult").innerHTML = table;
+        document.getElementById("opResult<?=$i?>").innerHTML = table;
       }
     });
   }
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API
   function ProcessImage(url) {
     AnonLog();
-    var control = document.getElementById("fileToUpload");
-    var file = control.files[0];
+  //  var control = document.getElementById("fileToUpload");
+  //  var file = control.files[0];
 
     // Load base64 encoded image
-    var reader = new FileReader();
+    /*var reader = new FileReader();
     reader.onload = (function (theFile) {
-      return function (e) {
-        var img = document.createElement('img');
+      return function (e) {*/
+        var imgg = document.createElement('imgg');
         var image = null;
         img.src = url;
         var jpg = true;
         try {
-          image = atob(e.target.result.split("data:image/jpeg;base64,")[1]);
+          image = atob(url.split("data:image/jpeg;base64,")[1]);
 
         } catch (e) {
           jpg = false;
         }
         if (jpg == false) {
           try {
-            image = atob(e.target.result.split("data:image/png;base64,")[1]);
+            image = atob(url.split("data:image/png;base64,")[1]);
           } catch (e) {
             alert("Not an image file Rekognition can process");
             return;
@@ -146,9 +146,9 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
         }
         //Call Rekognition
         DetectFaces(imageBytes);
-      };
+      /*};
     })(file);
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file);*/
   }
   //Provides anonymous log on to AWS services
   function AnonLog() {
@@ -183,13 +183,14 @@ foreach ($objects as $object) {
 <canvas id="canvas<?=$i?>" width="640" height="480"></canvas>
 <button type="button" id="button<?=$i?>">Click to view image</button>
 <button type="button" id="analyze<?=$i?>">Click to analyze image</button>
+<p id="opResult<?=$i?>"></p>
 
 <? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas("'.$url.'","canvas'.$i.'");
 }, false);
 document.getElementById("analyze'.$i.'").addEventListener("click", function () {
-  ProcessImage("'.$url.'");
+  ProcessImage();
 }, false);
  </script>';?>
 <?		}?>
