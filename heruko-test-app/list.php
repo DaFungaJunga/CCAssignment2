@@ -60,10 +60,10 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home </span></a>
+          <a class="nav-link" href="index.php">Home</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="list.php">Other Users <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="list.php">Analysis<span class="sr-only">(current)</span></a>
         </li>
       </ul>
 
@@ -76,8 +76,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   </div>
 
 </main><!-- /.container -->
-<h1>S3 Download example</h1>
-<h3>S3 Files</h3>
+<h1>View Stored Images and Analyze Age</h1>
 <script>
 
   /*document.getElementById("fileToUpload").addEventListener("change", function (event) {

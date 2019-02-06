@@ -43,10 +43,10 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="list.php">Other Users</a>
+          <a class="nav-link" href="list.php">Analysis</a>
         </li>
       </ul>
 
@@ -59,7 +59,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   </div>
 
 </main><!-- /.container -->
-<h1>Camera Test</h1>
+<h1>Upload Photo To Analyze Your Age!</h1>
 <video id="video" width="640" height="480" autoplay></video>
 <button id="snap">Snap Photo</button>
 <a href="#" class="button" id="btn-download" download="my-file-name.png">Download Picture</a>
