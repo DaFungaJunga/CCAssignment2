@@ -186,7 +186,7 @@ foreach ($objects as $object) {
 ?>
 
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
-<canvas id="canvas<?=$i?>" width="640" height="480" crossorigin="anonymous"></canvas>
+<canvas id="canvas<?=$i?>" width="640" height="480" crossorigin="Anonymous"></canvas>
 <button type="button" id="button<?=$i?>">Click to view image</button>
 <button type="button" id="analyze<?=$i?>">Click to analyze image</button>
 <p id="opResult<?=$i?>"></p>
