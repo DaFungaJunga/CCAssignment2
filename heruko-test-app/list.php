@@ -124,8 +124,8 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
         //imgg.src = url;
         var canvasID = "canvas"+i;
         var canvas = document.getElementById(canvasID);
-        canvas.crossOrigin = "Anonymous";
-        //imgg.crossOrigin = "Use-Credentials";
+        //canvas.crossOrigin = "Anonymous";
+        canvas.crossOrigin = "use-credentials";
 
         imgg.src = canvas.toDataURL();
         var jpg = true;
