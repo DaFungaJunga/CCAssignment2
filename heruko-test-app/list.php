@@ -27,7 +27,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   <script>
   function drawDataURIOnCanvas(strDataURI, canvas) {
     var img = new window.Image();
-    var myCanvas = document.getElementById("canvas");
+    var myCanvas = document.getElementById(canvas);
     var myCanvasContext = myCanvas.getContext("2d");
 
     img.addEventListener("load", function () {
