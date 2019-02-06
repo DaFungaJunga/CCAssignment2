@@ -183,12 +183,10 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       var sessionToken = AWS.config.credentials.sessionToken;
     });
   }
+
 </script>
 <?php
-$account_sid = 'AC138e7e2ddc666ae36984889a919123b8';
-$auth_token = 'e3b25cd992d91aba1d2afdf2628233a5';
-$twilio_number = "+12892747516";
-$client = new Client($account_sid, $auth_token);
+
 
 try {
 $objects = $s3->getIterator('ListObjects', array(
@@ -218,18 +216,6 @@ document.getElementById("message'.$i.'").addEventListener("click", function () {
 }, false);
  </script>';?>
 <?		}?>
-<?
-if(isset($_POST["submit"])) {
-  $client->messages->create(
-      // Where to send a text message (your cell phone?)
-      $_POST['phone'],
-      array(
-          'from' => $twilio_number,
-          'body' => 'Go to https://assignment2-sofe4630.herokuapp.com/index.php to have an AI guess your Age!'
-      )
-  );
-}
-?>
 <?php } catch(Exception $e) {
 echo 'Caught exception: ',  $e->getMessage(), "\n";
 
