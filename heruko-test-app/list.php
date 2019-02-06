@@ -185,12 +185,12 @@ foreach ($objects as $object) {
 <? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas('.$url.','.$i.');
-});
+}, false);
  </script>';?>
 <? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
 window.onload = function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
-}, false);
+};
  </script>'; ?>
 <?		}?>
 
