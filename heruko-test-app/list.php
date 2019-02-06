@@ -81,7 +81,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <form>
   Share this Site with your Friends! Enter Their Phone Number Below:
   <input type="tel" id="phone" name="phone">
-  <input type="submit" value="submit">
+  <input type="submit" id="submit" name="submit" value="submit">
 </form>
 <script>
 
