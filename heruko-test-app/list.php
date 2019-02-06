@@ -183,9 +183,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       var sessionToken = AWS.config.credentials.sessionToken;
     });
   }
-  function msg(url){
-
-  }
 </script>
 <?php
 $account_sid = 'AC138e7e2ddc666ae36984889a919123b8';
