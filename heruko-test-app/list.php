@@ -77,7 +77,11 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 
 </main><!-- /.container -->
 <h1>View Stored Images and Analyze Age</h1>
-
+<form>
+  Share this Site with your Friends! Enter Their Phone Number Below:
+  <input type="tel" id="phone" name="phone">
+  <input type="submit" value="submit">
+</form>
 <script>
 
   /*document.getElementById("fileToUpload").addEventListener("change", function (event) {
@@ -185,16 +189,6 @@ $account_sid = 'AC138e7e2ddc666ae36984889a919123b8';
 $auth_token = 'e3b25cd992d91aba1d2afdf2628233a5';
 $twilio_number = "+12892747516";
 $client = new Client($account_sid, $auth_token);
-if(isset($_POST["submit"])) {
-  $client->messages->create(
-      // Where to send a text message (your cell phone?)
-      $_POST['phone'],
-      array(
-          'from' => $twilio_number,
-          'body' => 'Go to https://assignment2-sofe4630.herokuapp.com/index.php to have an AI guess your Age!'
-      )
-  );
-}
 
 try {
 $objects = $s3->getIterator('ListObjects', array(
@@ -224,6 +218,18 @@ document.getElementById("message'.$i.'").addEventListener("click", function () {
 }, false);
  </script>';?>
 <?		}?>
+<?
+if(isset($_POST["submit"])) {
+  $client->messages->create(
+      // Where to send a text message (your cell phone?)
+      $_POST['phone'],
+      array(
+          'from' => $twilio_number,
+          'body' => 'Go to https://assignment2-sofe4630.herokuapp.com/index.php to have an AI guess your Age!'
+      )
+  );
+}
+?>
 <?php } catch(Exception $e) {
 echo 'Caught exception: ',  $e->getMessage(), "\n";
 
