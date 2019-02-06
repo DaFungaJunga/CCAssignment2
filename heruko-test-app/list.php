@@ -153,8 +153,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       var sessionToken = AWS.config.credentials.sessionToken;
     });
   }
-  window.onload = function ()
-   {
   function drawDataURIOnCanvas(strDataURI, canvas) {
     var img = new window.Image();
     var myCanvas = document.getElementById("canvas");
@@ -165,7 +163,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       myCanvasContext.drawImage(img, 0, 0);
     });
     img.setAttribute("src", strDataURI);
-  }
 }
 </script>
 <?php
@@ -183,9 +180,7 @@ foreach ($objects as $object) {
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=$i ?>" width="640" height="480"></canvas>
 <? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
-window.onload = function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
-};
  </script>'; ?>
 <?		}?>
 
