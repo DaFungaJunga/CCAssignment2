@@ -155,8 +155,12 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   }
   function drawDataURIOnCanvas(strDataURI, canvas) {
     var img = new window.Image();
+    var myCanvas = document.getElementById("canvas");
+    var myCanvasContext = myCanvas.getContext("2d");
+
     img.addEventListener("load", function () {
-        document.getElementById(canvas).getContext("2d").drawImage(img, 0, 0);
+      //canvas.getContext("2d").drawImage(img, 0, 0);
+      myCanvasContext.drawImage(img, 0, 0);
     });
     img.setAttribute("src", strDataURI);
 }
