@@ -186,8 +186,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 
 </script>
 <?php
-
-
 try {
 $objects = $s3->getIterator('ListObjects', array(
 "Bucket" => $bucket
@@ -222,7 +220,26 @@ echo 'Caught exception: ',  $e->getMessage(), "\n";
 ?>
 <p>error :(</p>
 <?php }  ?>
-
+<?php
+try{
+$account_sid = 'AC138e7e2ddc666ae36984889a919123b8';
+$auth_token = 'e3b25cd992d91aba1d2afdf2628233a5';
+$twilio_number = "+12892747516";
+$client = new Client($account_sid, $auth_token);
+if(isset($_POST["submit"])) {
+  $client->messages->create(
+      // Where to send a text message (your cell phone?)
+      $_POST['phone'],
+      array(
+          'from' => $twilio_number,
+          'body' => 'Go to https://assignment2-sofe4630.herokuapp.com/index.php to have an AI guess your Age!'
+      )
+  );
+}
+}catch(Exception $e) {
+echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+?>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
