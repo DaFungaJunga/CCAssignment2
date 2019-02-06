@@ -109,7 +109,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
             '</td><td>' + data.FaceDetails[i].AgeRange.High + '</td></tr>';
         }
         table += "</table>";
-        responsiveVoice.speak("Amazon Recognion has determine that you are between"+lowCount+ "and" +highCount+ " years old");
+        responsiveVoice.speak("Amazon Recognition has determine that you are between "+lowCount+ " and " +highCount+ " years old");
         document.getElementById("opResult"+x).innerHTML = table;
       }
     });
