@@ -110,7 +110,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     });
   }
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API
-  function ProcessImage() {
+  function ProcessImage(url) {
     AnonLog();
     var control = document.getElementById("fileToUpload");
     var file = control.files[0];
@@ -121,7 +121,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       return function (e) {
         var img = document.createElement('img');
         var image = null;
-        img.src = e.target.result;
+        img.src = url;
         var jpg = true;
         try {
           image = atob(e.target.result.split("data:image/jpeg;base64,")[1]);
@@ -182,9 +182,14 @@ foreach ($objects as $object) {
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=$i?>" width="640" height="480"></canvas>
 <button type="button" id="button<?=$i?>">Click to view image</button>
+<button type="button" id="analyze<?=$i?>">Click to analyze image</button>
+
 <? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas("'.$url.'","canvas'.$i.'");
+}, false);
+document.getElementById("analyze'.$i.'").addEventListener("click", function () {
+  ProcessImage("'.$url.'");
 }, false);
  </script>';?>
 <?		}?>
