@@ -78,7 +78,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 
 </main><!-- /.container -->
 <h1>View Stored Images and Analyze Age</h1>
-<form>
+<form action="list.php" method="get">
   Share this Site with your Friends! Enter Their Phone Number Below:
   <input type="tel" id="phone" name="phone">
   <input type="submit" id="submit" name="submit" value="submit">
@@ -224,10 +224,10 @@ $account_sid = 'AC138e7e2ddc666ae36984889a919123b8';
 $auth_token = 'e3b25cd992d91aba1d2afdf2628233a5';
 $twilio_number = "+12892747516";
 $client = new Client($account_sid, $auth_token);
-if(isset($_POST["submit"])) {
+if(isset($_GET["submit"])) {
   $client->messages->create(
       // Where to send a text message (your cell phone?)
-      $_POST['phone'],
+      $_GET['phone'],
       array(
           'from' => $twilio_number,
           'body' => 'Go to https://assignment2-sofe4630.herokuapp.com/index.php to have an AI guess your Age!'
