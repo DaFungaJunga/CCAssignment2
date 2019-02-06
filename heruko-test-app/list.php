@@ -24,6 +24,19 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
   <script src="amazon-cognito-identity.min.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.16.0.min.js"></script>
   <script src="./app.js"></script>
+  <script>
+  function drawDataURIOnCanvas(strDataURI, canvas) {
+    var img = new window.Image();
+    var myCanvas = document.getElementById("canvas");
+    var myCanvasContext = myCanvas.getContext("2d");
+
+    img.addEventListener("load", function () {
+      //canvas.getContext("2d").drawImage(img, 0, 0);
+      myCanvasContext.drawImage(img, 0, 0);
+    });
+    img.setAttribute("src", strDataURI);
+}
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -66,9 +79,9 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
 <h3>S3 Files</h3>
 <script>
 
-  document.getElementById("fileToUpload").addEventListener("change", function (event) {
+  /*document.getElementById("fileToUpload").addEventListener("change", function (event) {
     ProcessImage();
-  }, false);
+  }, false);*/
 
   //Calls DetectFaces API and shows estimated ages of detected faces
   function DetectFaces(imageData) {
@@ -153,17 +166,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
       var sessionToken = AWS.config.credentials.sessionToken;
     });
   }
-  function drawDataURIOnCanvas(strDataURI, canvas) {
-    var img = new window.Image();
-    var myCanvas = document.getElementById("canvas");
-    var myCanvasContext = myCanvas.getContext("2d");
-
-    img.addEventListener("load", function () {
-      //canvas.getContext("2d").drawImage(img, 0, 0);
-      myCanvasContext.drawImage(img, 0, 0);
-    });
-    img.setAttribute("src", strDataURI);
-}
 </script>
 <?php
 try {
