@@ -110,7 +110,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     });
   }
   //Loads selected image and unencodes image bytes for Rekognition DetectFaces API
-  function ProcessImage(url) {
+  function ProcessImage(i) {
     AnonLog();
   //  var control = document.getElementById("fileToUpload");
   //  var file = control.files[0];
@@ -122,7 +122,8 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
         var imgg = document.createElement('imgg');
         var image = null;
         //imgg.src = url;
-        var canvas = document.getElementById("canvas<?echo $i?>");
+        var canvasID = "canvas"+i;
+        var canvas = document.getElementById(canvasID);
         imgg.src = canvas.toDataURL();
         var jpg = true;
         try {
@@ -191,7 +192,7 @@ document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas("'.$url.'","canvas'.$i.'");
 }, false);
 document.getElementById("analyze'.$i.'").addEventListener("click", function () {
-  ProcessImage();
+  ProcessImage("'.$i.'");
 }, false);
  </script>';?>
 <?		}?>
