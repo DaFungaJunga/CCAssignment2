@@ -182,6 +182,7 @@ window.onload = function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
 };
  </script>'; ?>
+ <?php echo "done" ?>
 <?		}?>
 
 <?php } catch(Exception $e) {
