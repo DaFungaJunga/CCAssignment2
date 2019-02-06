@@ -132,14 +132,14 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
         imgg.src = canvas.toDataURL();
         var jpg = true;
         try {
-          image = atob(url.split("data:image/jpeg;base64,")[1]);
+          image = atob(canvas.toDataURL().split("data:image/jpeg;base64,")[1]);
 
         } catch (e) {
           jpg = false;
         }
         if (jpg == false) {
           try {
-            image = atob(url.split("data:image/png;base64,")[1]);
+            image = atob(canvas.toDataURL().split("data:image/png;base64,")[1]);
           } catch (e) {
             alert("Not an image file Rekognition can process");
             return;
