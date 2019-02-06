@@ -121,7 +121,9 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       return function (e) {*/
         var imgg = document.createElement('imgg');
         var image = null;
-        imgg.src = url;
+        //imgg.src = url;
+        var canvas = document.getElementById("canvas<?echo $i?>");
+        imgg.src = canvas.toDataURL();
         var jpg = true;
         try {
           image = atob(url.split("data:image/jpeg;base64,")[1]);
@@ -184,7 +186,6 @@ foreach ($objects as $object) {
 <button type="button" id="button<?=$i?>">Click to view image</button>
 <button type="button" id="analyze<?=$i?>">Click to analyze image</button>
 <p id="opResult<?=$i?>"></p>
-
 <? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas("'.$url.'","canvas'.$i.'");
