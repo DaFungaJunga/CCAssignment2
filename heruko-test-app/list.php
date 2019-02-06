@@ -155,7 +155,6 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
   }
   function drawDataURIOnCanvas(strDataURI, canvas) {
   <?  echo 'drawing to canvas '?>
-    "use strict";
     var img = new window.Image();
     img.addEventListener("load", function () {
         canvas.getContext("2d").drawImage(img, 0, 0);
@@ -177,7 +176,7 @@ foreach ($objects as $object) {
 
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=$i ?>" width="640" height="480"></canvas>
-<? echo '<script> var canvas'.$i.' = '. $url.'; var url = '.$url.';
+<? echo '<script> var canvas"'.$i.' = '. $url.'"; var url = "'.$url.'";
 window.onload = function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
 };
