@@ -96,15 +96,20 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       ]
     };
     rekognition.detectFaces(params, function (err, data) {
+      var lowCount = 0;
+      var highCount = 0;
       if (err) console.log(err, err.stack); // an error occurred
       else {
        var table = "<table><tr><th>Low</th><th>High</th></tr>";
         // show each face and build out estimated age table
         for (var i = 0; i < data.FaceDetails.length; i++) {
+          lowCount = data.FaceDetails[i].AgeRange.Low;
+          highCount = data.FaceDetails[i].AgeRange.High;
           table += '<tr><td>' + data.FaceDetails[i].AgeRange.Low +
             '</td><td>' + data.FaceDetails[i].AgeRange.High + '</td></tr>';
         }
         table += "</table>";
+        responsiveVoice.speak("Amazon Recognion has determine that you are between"+lowCount+ "and" +highCount+ " years old");
         document.getElementById("opResult"+x).innerHTML = table;
       }
     });
@@ -215,5 +220,6 @@ echo 'Caught exception: ',  $e->getMessage(), "\n";
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
 <script src="../../assets/js/vendor/popper.min.js"></script>
 <script src="../../dist/js/bootstrap.min.js"></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 </body>
 </html>
