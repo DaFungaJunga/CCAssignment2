@@ -121,7 +121,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       return function (e) {*/
         var imgg = document.createElement('imgg');
         var image = null;
-        img.src = url;
+        imgg.src = url;
         var jpg = true;
         try {
           image = atob(url.split("data:image/jpeg;base64,")[1]);
