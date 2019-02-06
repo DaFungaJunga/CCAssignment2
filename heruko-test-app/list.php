@@ -182,7 +182,7 @@ foreach ($objects as $object) {
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=$i ?>" width="640" height="480"></canvas>
 <? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
-window.onload = function() {
+$( document ).ready(function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
 };
  </script>'; ?>
