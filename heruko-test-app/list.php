@@ -35,6 +35,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       myCanvasContext.drawImage(img, 0, 0);
     });
     img.setAttribute("src", strDataURI);
+    img.crossOrigin = "Anonymous"
 }
   </script>
   <meta charset="utf-8">
@@ -120,13 +121,14 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
     reader.onload = (function (theFile) {
       return function (e) {*/
         var imgg = document.createElement('imgg');
+        //imgg.crossOrigin = "Anonymous"
         var image = null;
         //imgg.src = url;
-        var canvasID = "canvas"+i;
+        var canvasID = ""+i;
         var canvas = document.getElementById(canvasID);
-        //canvas.crossOrigin = "Anonymous";
-        canvas.crossOrigin = "use-credentials";
-
+        canvas.crossOrigin = "Anonymous";
+        //canvas.crossOrigin = "use-credentials";
+        //console.log(canvas.toDataUrl());
         imgg.src = canvas.toDataURL();
         var jpg = true;
         try {
