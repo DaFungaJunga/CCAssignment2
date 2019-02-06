@@ -182,13 +182,11 @@ foreach ($objects as $object) {
 <p> <a href="<?=$url?>"> <?echo $object['Key'] . "<br>";?></a></p>
 <canvas id="canvas<?=$i?>" width="640" height="480"></canvas>
 <button type="button" id="button<?=$i?>">Click to view image</button>
-<? echo '
+<? echo '<script>
 document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas('.$url.','.$i.');
 });
-
-'
-?>
+ </script>';?>
 <? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
 window.onload = function() {
 drawDataURIOnCanvas(url, canvas'.$i.');
