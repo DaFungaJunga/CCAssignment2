@@ -35,7 +35,7 @@ $bucket = getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!'
       myCanvasContext.drawImage(img, 0, 0);
     });
     img.setAttribute("src", strDataURI);
-    //img.crossOrigin = "Anonymous";
+    img.crossOrigin = "Anonymous";
 }
   </script>
   <meta charset="utf-8">
