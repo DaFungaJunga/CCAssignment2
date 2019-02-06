@@ -1,5 +1,6 @@
 <?php
 require('vendor/autoload.php');
+use Twilio\Rest\Client;
 $buck =getenv('S3_BUCKET')?: die('No "S3_BUCKET" config var in found in env!');
 $ke =getenv('AWS_ACCESS_KEY_ID')?: die('No "S3_BUCKET" config var in found in env!');
 $se =getenv('AWS_SECRET_ACCESS_KEY')?: die('No "S3_BUCKET" config var in found in env!');
@@ -208,9 +209,6 @@ document.getElementById("button'.$i.'").addEventListener("click", function() {
 }, false);
 document.getElementById("analyze'.$i.'").addEventListener("click", function () {
   ProcessImage("'.$i.'");
-}, false);
-document.getElementById("message'.$i.'").addEventListener("click", function () {
-  msg("'.$url.'");
 }, false);
  </script>';?>
 <?		}?>

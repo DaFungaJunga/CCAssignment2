@@ -1,6 +1,7 @@
 {
     "require": {
         "guzzlehttp/guzzle": "^6.3",
-        "aws/aws-sdk-php": "~2.6"
+        "aws/aws-sdk-php": "~2.6",
+        "twilio/sdk": "^5.28"
     }
 }
