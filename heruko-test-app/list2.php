@@ -187,7 +187,13 @@ document.getElementById("button'.$i.'").addEventListener("click", function() {
     drawDataURIOnCanvas('.$url.','.$i.');
 }, false);
  </script>';?>
+<? echo '<script> var canvas'.$i.' = "'. $url.'"; var url = "'.$url.'";
+window.onload = function() {
+drawDataURIOnCanvas(url, canvas'.$i.');
+};
+ </script>'; ?>
 <?		}?>
+
 <?php } catch(Exception $e) {
 echo 'Caught exception: ',  $e->getMessage(), "\n";
 
